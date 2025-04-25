@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>StudySync - Dashboard</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 2rem;
+            background: #f7f7f7;
+        }
+        .nav {
+            margin-bottom: 1rem;
+        }
+        .nav a {
+            margin-right: 1rem;
+            text-decoration: none;
+            color: #007BFF;
+        }
+        .nav a:hover {
+            text-decoration: underline;
+        }
+        .box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        {% if current_user.is_authenticated %}
+            Hello, {{ current_user.username }} |
+            <a href="{{ url_for('main.logout') }}">Logout</a>
+            <a href="#">Upload Data</a>
+            <a href="#">View My Stats</a>
+        {% else %}
+            <a href="{{ url_for('main.login') }}">Login</a>
+            <a href="{{ url_for('main.register') }}">Register</a>
+        {% endif %}
+    </div>
+
+    <div class="box">
+        <h1>Welcome to StudySync</h1>
+        <p>Your personalized study tracker & analytics dashboard.</p>
+
+        {% if not current_user.is_authenticated %}
+            <p>Create an account or login to start tracking your study progress.</p>
+        {% else %}
+            <p>Use the menu above to upload study data or explore your productivity stats.</p>
+        {% endif %}
+    </div>
+
+</body>
+</html>

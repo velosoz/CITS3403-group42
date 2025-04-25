@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head><title>Upload Study Data</title></head>
+<body>
+    <h2>Upload Study Entry</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.unit.label }} {{ form.unit() }}<br>
+        {{ form.hours.label }} {{ form.hours() }}<br>
+        {{ form.date.label }} {{ form.date() }}<br>
+        {{ form.mood.label }} {{ form.mood() }}<br>
+        {{ form.submit() }}
+    </form>
+    <p><a href="{{ url_for('main.home') }}">Back to Home</a></p>
+</body>
+</html>
